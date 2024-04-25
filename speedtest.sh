@@ -1,15 +1,14 @@
 #!/bin/bash
 
-
 ######### 自定义常量 ##########
 
 _constant() {
-    script_version="v2023-12-26"
+    script_version="v2024-04-25"
     old_IFS="$IFS"
     work_dir="./sp-github-i-abc"
     node_set=""
-    node_set_1="https://github.com/i-abc/Speedtest/raw/node/all-node.txt"
-    node_set_2="https://jihulab.com/i-abc/speedtest/-/raw/node/all-node-mirror.txt"
+    node_set_1="https://raw.githubusercontent.com/i-abc/speedtest/node/all-node.txt"
+    node_set_2="https://asset.bash.icu/https://raw.githubusercontent.com/i-abc/speedtest/node/all-node-mirror.txt"
 
     # url_1为官方源，url_2为镜像源，皆会进行SHA-256检测
 
@@ -22,7 +21,7 @@ _constant() {
     speedtest_cli_tar_armel_sha256="629a455a2879224bd0dbd4b36d8c721dda540717937e4660b4d2c966029466bf"
     speedtest_cli_tar_url=""
     speedtest_cli_tar_url_1="https://install.speedtest.net/app/cli/ookla-speedtest-${speedtest_cli_version}-linux-${speedtest_cli_arch}.tgz"
-    speedtest_cli_tar_url_2="https://jihulab.com/i-abc/speedtest/-/raw/asset/speedtest-cli/v${speedtest_cli_version}/ookla-speedtest-${speedtest_cli_version}-linux-${speedtest_cli_arch}.tgz"
+    speedtest_cli_tar_url_2="https://asset.bash.icu/https://raw.githubusercontent.com/i-abc/speedtest/asset/speedtest-cli/v${speedtest_cli_version}/ookla-speedtest-${speedtest_cli_version}-linux-${speedtest_cli_arch}.tgz"
 
     # bim-core，https://github.com/veoco/bim-core
     bim_core_version="0.17.0"
@@ -30,18 +29,18 @@ _constant() {
     bim_core_tar_aarch64_sha256="fa62357f94050fbb7851d1bbb7e393d8e1301281ce03c43b37dae55cbf08c198"
     bim_core_tar_url=""
     bim_core_tar_url_1="https://github.com/veoco/bim-core/releases/download/v${bim_core_version}/bimc-${bim_core_arch}-unknown-linux-musl"
-    bim_core_tar_url_2="https://jihulab.com/i-abc/speedtest/-/raw/asset/bim-core/v${bim_core_version}/bimc-${bim_core_arch}-unknown-linux-musl"
+    bim_core_tar_url_2="https://asset.bash.icu/https://github.com/veoco/bim-core/releases/download/v${bim_core_version}/bimc-${bim_core_arch}-unknown-linux-musl"
 
     # speedtest-go，https://github.com/showwin/speedtest-go
-    speedtest_go_version="1.6.10"
-    speedtest_go_tar_x86_64_sha256="1da0afb6164dcefc2bcbfffa5c976e6b83304c7fd407eafa8018c33bd325bb3f"
-    speedtest_go_tar_i386_sha256="631f083af3c1931a53ed67d182dc7b1fbc5202f03607cdfabb1abb8499b74ef9"
-    speedtest_go_tar_arm64_sha256="245abaea78214866b1eac372dca752a74fab2eb1293929c57a779a65187c33eb"
-    speedtest_go_tar_armv7_sha256="b058b82fcf977a8ad03a7bc0977113bda47437f535f95ae86a8023c67e446aed"
-    speedtest_go_tar_armv6_sha256="0a049a1280d45538b1e76bfe9498a86070f48631f59c2676e1756907528e531e"
+    speedtest_go_version="1.6.11"
+    speedtest_go_tar_x86_64_sha256="2603cf54513dd770353d66095a30b13d170d225a0a60fc07ee6d5f5a78e15a27"
+    speedtest_go_tar_i386_sha256="5ec1df89446aab656c0947c9028fa93b40ec83a4132e30b3dad978215103e294"
+    speedtest_go_tar_arm64_sha256="68b1be4cd6dbbd3d68216a106b578fd2bdf51b8606d3597743aefdb2f0234c24"
+    speedtest_go_tar_armv7_sha256="f30ba82ac4e6fd967302d505fa7380745d89a4ddcfb72f607b580ef507e5eb0a"
+    speedtest_go_tar_armv6_sha256="ccdc0a4281c193cccc027e7c2fb2b961e1eb3e4eab1dcf68b46bd0dafd2e895f"
     speedtest_go_tar_url=""
     speedtest_go_tar_url_1="https://github.com/showwin/speedtest-go/releases/download/v${speedtest_go_version}/speedtest-go_${speedtest_go_version}_Linux_${speedtest_go_arch}.tar.gz"
-    speedtest_go_tar_url_2="https://jihulab.com/i-abc/speedtest/-/raw/asset/speedtest-go/v${speedtest_go_version}/speedtest-go_${speedtest_go_version}_Linux_${speedtest_go_arch}.tar.gz"
+    speedtest_go_tar_url_2="https://asset.bash.icu/https://github.com/showwin/speedtest-go/releases/download/v${speedtest_go_version}/speedtest-go_${speedtest_go_version}_Linux_${speedtest_go_arch}.tar.gz"
 
     # librespeed-cli，https://github.com/librespeed/speedtest-cli
     librespeed_cli_version="1.0.10"
@@ -52,7 +51,7 @@ _constant() {
     librespeed_cli_tar_armv6_sha256="def98bbf0e79805411bca312e9e6bcddd12cd0abf4e6584a3ae05aa20c762b64"
     librespeed_cli_tar_url=""
     librespeed_cli_tar_url_1="https://github.com/librespeed/speedtest-cli/releases/download/v${librespeed_cli_version}/librespeed-cli_${librespeed_cli_version}_linux_${librespeed_cli_arch}.tar.gz"
-    librespeed_cli_tar_url_2="https://jihulab.com/i-abc/speedtest/-/raw/asset/librespeed-cli/v${librespeed_cli_version}/librespeed-cli_${librespeed_cli_version}_linux_${librespeed_cli_arch}.tar.gz"
+    librespeed_cli_tar_url_2="https://asset.bash.icu/https://github.com/librespeed/speedtest-cli/releases/download/v${librespeed_cli_version}/librespeed-cli_${librespeed_cli_version}_linux_${librespeed_cli_arch}.tar.gz"
 
     # 配色
     red='\033[1;31m'
@@ -64,16 +63,25 @@ _constant() {
     endc='\033[0m'
 }
 
+########## 进度条 ###########
+_show_progress_bar() {
+    local bar="⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏"
+    local i=0
+    local n="${#bar}"
+    while sleep 0.1; do
+        printf "\r  ${green}测试进行中 %s${endc} " "${bar:i++%n:1}"
+    done
+}
 
 ########## 横幅 ###########
 
 _print_banner_1() {
-     echo "------------------------ 多功能 自更新 测速脚本 ------------------------"
-     echo -e " Version               : ${green}${script_version}${endc}"
-     echo -e " Usage                 : ${yellow}bash <(curl -sL bash.icu/speedtest)${endc}"
-     echo -e " GitHub                : ${green}https://github.com/i-abc/speedtest${endc}"
-     printf "%-72s\n" "-" | sed 's)\s)-)g'
- }
+    echo "------------------------ 多功能 自更新 测速脚本 ------------------------"
+    echo -e " Version               : ${green}${script_version}${endc}"
+    echo -e " Usage                 : ${yellow}bash <(curl -sL bash.icu/speedtest)${endc}"
+    echo -e " GitHub                : ${green}https://github.com/i-abc/speedtest${endc}"
+    printf "%-72s\n" "-" | sed 's)\s)-)g'
+}
 
 _print_banner_2() {
     if [ -s "$work_dir"/banner-custom.txt ]; then
@@ -88,12 +96,21 @@ _print_banner_3() {
 
 _print_banner_4() {
     printf "%-72s\n" "-" | sed 's)\s)-)g'
-    echo "当前时间：$(date +"%Y-%m-%d %H:%M:%S %Z")"
-    echo "北京时间: $(TZ=Asia/Shanghai date --rfc-3339=seconds)"
-    printf "%-72s\n" "-" | sed 's)\s)-)g'
-    echo
+    echo "系统时间：$(date +"%Y-%m-%d %H:%M:%S %Z")"
+    echo "北京时间: $(TZ=Asia/Shanghai date +"%Y-%m-%d %H:%M:%S %Z")"
+    printf "%-72s\n\n" "-" | sed 's)\s)-)g'
 }
 
+########## 检测是否为 root ##########
+_check_user() {
+    sudo_flag=""
+    if [[ "${UID}" -eq 0 ]]; then
+        echo "当前用户是 root"
+    else
+        echo "当前用户不是 root"
+        sudo_flag="sudo"
+    fi
+}
 
 ########## 确认架构及其对应版本的程序 ##########
 
@@ -103,7 +120,7 @@ _check_architecture() {
     speedtest_go_arch=""
     librespeed_cli_arch=""
     local arch
-    arch="$( uname -m )"
+    arch="$(uname -m)"
     if [ "$arch" == "x86_64" ]; then
         speedtest_cli_arch="x86_64"
         bim_core_arch="x86_64"
@@ -129,12 +146,10 @@ _check_architecture() {
     fi
 }
 
-
 ########## 检测地区，指定下载源 ##########
 
 _check_region() {
-    local loc
-    loc=$( curl -s "https://www.visa.cn/cdn-cgi/trace" | awk -F'=' '/loc/{ print $2 }' )
+    loc=$(curl -s -L "https://www.qualcomm.cn/cdn-cgi/trace" | awk -F'=' '/loc/{ print $2 }')
     echo "loc: $loc"
     if [ -z "$loc" ]; then
         echo "使用镜像源"
@@ -160,7 +175,6 @@ _check_region() {
     fi
 }
 
-
 ########## 检测某软件包是否安装，没安则自动安上，目前只支持RedHat、Debian系 ##########
 
 _check_package() {
@@ -170,23 +184,17 @@ _check_package() {
         # 确认包管理器并安装软件包
         # RedHat
         if command -v dnf; then
-            dnf install -y "$2"
+            ${sudo_flag} dnf install -y "$2"
         elif command -v yum; then
-            yum install -y "$2"
+            ${sudo_flag} yum install -y "$2"
         # Debian
         elif command -v apt; then
-            apt install -y "$2"
-        # Alpine
-        elif command -v apk; then
-            apk add "$2"
+            ${sudo_flag} apt install -y "$2"
         # Arch Linux
         elif command -v pacman; then
-            pacman -S --noconfirm "$2"
-        # openSUSE
-        elif command -v zypper; then
-            zypper install -y "$2"
+            ${sudo_flag} pacman -S --noconfirm "$2"
         else
-            echo "本机非RedHat、Debian、Alpine、Arch Linux、openSUSE"
+            echo "本机非RedHat、Debian、Arch Linux"
             echo "暂不支持自动安装所需的软件包"
             exit 1
         fi
@@ -199,7 +207,6 @@ _check_package() {
     fi
 }
 
-
 ########## 创建工作目录 ##########
 
 _make_dir() {
@@ -208,7 +215,6 @@ _make_dir() {
     # 创建目录
     mkdir "$work_dir"
 }
-
 
 ########## 下载程序 ##########
 
@@ -227,33 +233,31 @@ _download_tar() {
     curl --progress-bar -o "$work_dir"/librespeed-cli.tar.gz -L "$librespeed_cli_tar_url"
 }
 
-
 ########## 检测程序的SHA-256 ##########
 
 _check_tar_sha256() {
     local speedtest_cli_tar_download_sha256 bim_core_tar_download_sha256 speedtest_go_tar_download_sha256 librespeed_cli_tar_download_sha256
-    speedtest_cli_tar_download_sha256=$( sha256sum "$work_dir"/speedtest-cli.tgz | awk '{ print $1 }' )
-    bim_core_tar_download_sha256=$( sha256sum "$work_dir"/bim-core | awk '{ print $1 }' )
-    speedtest_go_tar_download_sha256=$( sha256sum "$work_dir"/speedtest-go.tar.gz | awk '{ print $1 }' )
-    librespeed_cli_tar_download_sha256=$( sha256sum "$work_dir"/librespeed-cli.tar.gz | awk '{ print $1 }' )
-    if [ "$speedtest_cli_tar_download_sha256" != "$( eval "echo \$speedtest_cli_tar_${speedtest_cli_arch}_sha256" )" ]; then
+    speedtest_cli_tar_download_sha256=$(sha256sum "$work_dir"/speedtest-cli.tgz | awk '{ print $1 }')
+    bim_core_tar_download_sha256=$(sha256sum "$work_dir"/bim-core | awk '{ print $1 }')
+    speedtest_go_tar_download_sha256=$(sha256sum "$work_dir"/speedtest-go.tar.gz | awk '{ print $1 }')
+    librespeed_cli_tar_download_sha256=$(sha256sum "$work_dir"/librespeed-cli.tar.gz | awk '{ print $1 }')
+    if [ "$speedtest_cli_tar_download_sha256" != "$(eval "echo \$speedtest_cli_tar_${speedtest_cli_arch}_sha256")" ]; then
         printf "${red}%-s${endc}\n" "经检测，speedtest-cli的SHA-256与官方不符，方便的话欢迎到GitHub反馈"
         exit 1
     fi
-    if [ "$bim_core_tar_download_sha256" != "$( eval "echo \$bim_core_tar_${bim_core_arch}_sha256" )" ] && [ -n "$bim_core_arch" ]; then
+    if [ "$bim_core_tar_download_sha256" != "$(eval "echo \$bim_core_tar_${bim_core_arch}_sha256")" ] && [ -n "$bim_core_arch" ]; then
         printf "${red}%-s${endc}\n" "经检测，bim-core的SHA-256与官方不符，方便的话欢迎到GitHub反馈"
         exit 1
     fi
-    if [ "$speedtest_go_tar_download_sha256" != "$( eval "echo \$speedtest_go_tar_${speedtest_go_arch}_sha256" )" ]; then
+    if [ "$speedtest_go_tar_download_sha256" != "$(eval "echo \$speedtest_go_tar_${speedtest_go_arch}_sha256")" ]; then
         printf "${red}%-s${endc}\n" "经检测，speedtest-go的SHA-256与官方不符，方便的话欢迎到GitHub反馈"
         exit 1
     fi
-    if [ "$librespeed_cli_tar_download_sha256" != "$( eval "echo \$librespeed_cli_tar_${librespeed_cli_arch}_sha256" )" ]; then
+    if [ "$librespeed_cli_tar_download_sha256" != "$(eval "echo \$librespeed_cli_tar_${librespeed_cli_arch}_sha256")" ]; then
         printf "${red}%-s${endc}\n" "经检测，librespeed-cli的SHA-256与官方不符，方便的话欢迎到GitHub反馈"
         exit 1
     fi
 }
-
 
 ########## 解压程序 ##########
 
@@ -264,21 +268,20 @@ _unzip_tar() {
     chmod +x "$work_dir"/bim-core
 }
 
-
-
 ########## 获取节点列表 ##########
 
 _get_node_list() {
     # 节点集合
     local node_url node_selection_1 node_selection_2 node_selection_3 first_line second_line
-    _print_banner_1; echo -e "${blue}↓    ↓    ↓    ↓    ↓    ↓   测速节点列表   ↓    ↓    ↓    ↓    ↓    ↓${endc}"
+    _print_banner_1
+    echo -e "${blue}↓    ↓    ↓    ↓    ↓    ↓   测速节点列表   ↓    ↓    ↓    ↓    ↓    ↓${endc}"
     echo -e "0. \033[1m自定义测速节点\033[0m"
-    curl -sL "$node_set" | awk '$0!~/http/{print}'
+    curl -s -L "$node_set" | awk '$0!~/http/{print}'
     printf "${yellow}%-s${endc}" "请输入您想选择的节点序号: "
     read -r node_selection_1
     # 某类节点
     if [ "$node_selection_1" -ne 0 ]; then
-        node_url=$(curl -sL "$node_set" | awk -F. "\$1== $node_selection_1 { getline; print }")
+        node_url=$(curl -s -L "$node_set" | awk -F. "\$1== $node_selection_1 { getline; print }")
         curl -o "$work_dir"/all-node.txt -L "$node_url"
     elif [ "$node_selection_1" -eq 0 ]; then
         printf "${yellow}%-s${endc}" "请输入您的自定义节点链接(http或本地绝对路径): "
@@ -286,14 +289,14 @@ _get_node_list() {
         # 判断自定义节点是网络链接还是本地文件
         # 网络，http
         if [[ "$node_url_custom" =~ \w{0}https?:// ]]; then
-            first_line="$( curl -sL "$node_url_custom" | awk -F'.' NR==1'{ print $1 }' )"
-            second_line="$( curl -sL "$node_url_custom" | awk NR==2 )"
-            if [ "$first_line" -eq 1 ] &> /dev/null && echo "$second_line" | grep -q -E "\w{0}https?://" &> /dev/null; then
+            first_line="$(curl -s -L "$node_url_custom" | awk -F'.' NR==1'{ print $1 }')"
+            second_line="$(curl -s -L "$node_url_custom" | awk NR==2)"
+            if [ "$first_line" -eq 1 ] &>/dev/null && echo "$second_line" | grep -q -E "\w{0}https?://" &>/dev/null; then
                 node_set="$node_url_custom"
-                curl -sL "$node_set" | awk '$0!~/http/{print}'
+                curl -s -L "$node_set" | awk '$0!~/http/{print}'
                 printf "${yellow}%-s${endc}" "请输入您想选择的节点序号: "
                 read -r node_selection_2
-                node_url=$(curl -sL "$node_set" | awk -F. "\$1== $node_selection_2 { getline; print }")
+                node_url=$(curl -s -L "$node_set" | awk -F. "\$1== $node_selection_2 { getline; print }")
                 curl -o "$work_dir"/all-node.txt -L "$node_url"
             else
                 node_url="$node_url_custom"
@@ -301,14 +304,14 @@ _get_node_list() {
             fi
         # 本地，绝对路径
         elif [[ "$node_url_custom" =~ \w{0}/{1} ]]; then
-            first_line="$( awk -F'.' NR==1'{ print $1 }' < "$node_url_custom" )"
-            second_line="$( awk NR==2 < "$node_url_custom" )"
-            if [ "$first_line" -eq 1 ] &> /dev/null && echo "$second_line" | grep -q -E "\w{0}/{1}" &> /dev/null; then
+            first_line="$(awk -F'.' NR==1'{ print $1 }' <"$node_url_custom")"
+            second_line="$(awk NR==2 <"$node_url_custom")"
+            if [ "$first_line" -eq 1 ] &>/dev/null && echo "$second_line" | grep -q -E "\w{0}/{1}" &>/dev/null; then
                 node_set="$node_url_custom"
-                awk '$0!~/^\//{print}' < "$node_set"
+                awk '$0!~/^\//{print}' <"$node_set"
                 printf "${yellow}%-s${endc}" "请输入您想选择的节点序号: "
                 read -r node_selection_3
-                node_url="$( awk -F. "\$1== $node_selection_3 { getline; print }" < "$node_set" )"
+                node_url="$(awk -F. "\$1== $node_selection_3 { getline; print }" <"$node_set")"
                 cp -f "$node_url" "$work_dir"/all-node.txt
             else
                 node_url="$node_url_custom"
@@ -318,81 +321,81 @@ _get_node_list() {
     fi
 }
 
-
 ########## 分类节点 ###########
 
 _classify_node() {
     # 总行数
     local row_num
-    row_num=$( wc -l "$work_dir"/all-node.txt | awk '{print $1}' )
+    row_num=$(wc -l "$work_dir"/all-node.txt | awk '{print $1}')
     # 分类
-    for (( i = 1; i <= row_num; i++ )); do
+    for ((i = 1; i <= row_num; i++)); do
         # 第一列
         local first_column
-        first_column=$( awk -F, NR==${i}'{print $1}' "$work_dir"/all-node.txt )
+        first_column=$(awk -F, NR==${i}'{print $1}' "$work_dir"/all-node.txt)
         # speedtest-cli
         if [[ "$first_column" =~ "speedtest-cli" ]]; then
-            awk NR==${i} "$work_dir"/all-node.txt >> "$work_dir"/speedtest-cli-node.txt
+            awk NR==${i} "$work_dir"/all-node.txt >>"$work_dir"/speedtest-cli-node.txt
         # bim-core
         elif [[ "$first_column" =~ "bim-core" ]] && [ -n "$bim_core_arch" ]; then
-            awk NR==${i} "$work_dir"/all-node.txt >> "$work_dir"/bim-core-node.txt
+            awk NR==${i} "$work_dir"/all-node.txt >>"$work_dir"/bim-core-node.txt
         # speedtest-go
         elif [[ "$first_column" =~ "speedtest-go" ]]; then
-            awk NR==${i} "$work_dir"/all-node.txt >> "$work_dir"/speedtest-go-node.txt
+            awk NR==${i} "$work_dir"/all-node.txt >>"$work_dir"/speedtest-go-node.txt
         # librespeed-cli
         elif [[ "$first_column" =~ "librespeed-cli" ]]; then
-            awk NR==${i} "$work_dir"/all-node.txt >> "$work_dir"/librespeed-cli-node.txt
+            awk NR==${i} "$work_dir"/all-node.txt >>"$work_dir"/librespeed-cli-node.txt
         # iperf3
         elif [[ "$first_column" =~ "iperf3" ]]; then
-            awk NR==${i} "$work_dir"/all-node.txt >> "$work_dir"/iperf3-node.txt
+            awk NR==${i} "$work_dir"/all-node.txt >>"$work_dir"/iperf3-node.txt
         # 自定义的横幅
         elif [ "$first_column" != "" ]; then
-            awk NR==${i} "$work_dir"/all-node.txt >> "$work_dir"/banner-custom.txt
+            awk NR==${i} "$work_dir"/all-node.txt >>"$work_dir"/banner-custom.txt
         fi
     done
 }
-
-
 
 ########## speedtest-cli ##########
 
 _speedtest_cli_test() {
     # speedtest-cli的选项、参数
-    awk -F, '{ print $3 }' "$work_dir"/speedtest-cli-node.txt > "$work_dir"/speedtest-cli-option.txt
+    awk -F, '{ print $3 }' "$work_dir"/speedtest-cli-node.txt >"$work_dir"/speedtest-cli-option.txt
     _filter_option_speedtest_cli "$work_dir"/speedtest-cli-option.txt "$work_dir"/speedtest-cli-option-filter.txt
     # speedtest-cli测试、输出
-    local option_para
-    local count="1"
+    option_para=""
+    count="1"
     while IFS= read -r option_para; do
         IFS="$old_IFS"
         local node_name latency jitter download upload
         local download_c="15" upload_c="15" latency_c="13" jitter_c="13"
         # speedtest-cli测试
-        timeout --foreground 70 "$work_dir"/speedtest --accept-license --accept-gdpr -f json-pretty $option_para > "$work_dir"/speedtest-cli-"$count".json 2> "$work_dir"/speedtest-cli-"$count"-error.json
+        _show_progress_bar &
+        bar_pid="$!" && disown "$bar_pid"
+        timeout --foreground 70 ${work_dir}/speedtest --accept-license --accept-gdpr -f json-pretty ${option_para} >${work_dir}/speedtest-cli-${count}.json 2>${work_dir}/speedtest-cli-${count}-error.json
+        kill "$bar_pid" 2>/dev/null && printf "\r"
         # speedtest-cli输出
         if [ -s "$work_dir"/speedtest-cli-"$count".json ]; then
             # 节点名称
-            node_name=$( awk -F, NR=="$count"'{ print $2 }' "$work_dir"/speedtest-cli-node.txt )
+            node_name=$(awk -F, NR=="$count"'{ print $2 }' "$work_dir"/speedtest-cli-node.txt)
             # 延迟，ms
-            latency="$( awk -F': |,' '/ping/{ getline; getline; print $2 }' "$work_dir"/speedtest-cli-"$count".json )"
+            latency="$(awk -F': |,' '/ping/{ getline; getline; print $2 }' "$work_dir"/speedtest-cli-"$count".json)"
             _check_num "$latency" || latency=" 失败"
             _check_num "$latency" || latency_c="15"
-            _check_num "$latency" && latency="$( printf "%.2f" "$latency" ) ms"
+            _check_num "$latency" && latency="$(printf "%.2f" "$latency") ms"
             # 抖动，ms
-            jitter="$( awk -F': |,' '/ping/{ getline; print $2 }' "$work_dir"/speedtest-cli-"$count".json )"
+            jitter="$(awk -F': |,' '/ping/{ getline; print $2 }' "$work_dir"/speedtest-cli-"$count".json)"
             _check_num "$jitter" || jitter=" 失败"
             _check_num "$jitter" || jitter_c="15"
-            _check_num "$jitter" && jitter="$( printf "%.2f" "$jitter" ) ms"
+            _check_num "$jitter" && jitter="$(printf "%.2f" "$jitter") ms"
             # 下载速度，bps->Mbps
-            download="$( awk -F': |,' '/download/{ getline; print $2 }' "$work_dir"/speedtest-cli-"$count".json )"
+            download="$(awk -F': |,' '/download/{ getline; print $2 }' "$work_dir"/speedtest-cli-"$count".json)"
             _check_num "$download" || download="  失败"
             _check_num "$download" || download_c="17"
-            _check_num "$download" && download="$( echo "scale=2; $download / 125000" | bc )" && download="$( printf "%.2f" "$download" ) Mbps"
+            _check_num "$download" && download="$(echo "scale=2; $download / 125000" | bc)" && download="$(printf "%.2f" "$download") Mbps"
             # 上传速度，bps->Mbps
-            upload="$( awk -F': |,' '/upload/{ getline; print $2 }' "$work_dir"/speedtest-cli-"$count".json )"
+            upload="$(awk -F': |,' '/upload/{ getline; print $2 }' "$work_dir"/speedtest-cli-"$count".json)"
             _check_num "$upload" || upload="  失败"
             _check_num "$upload" || upload_c="17"
-            _check_num "$upload" && upload="$( echo "scale=2; $upload / 125000" | bc )" && upload="$( printf "%.2f" "$upload" ) Mbps"
+            _check_num "$upload" && upload="$(echo "scale=2; $upload / 125000" | bc)" && upload="$(printf "%.2f" "$upload") Mbps"
             # 输出结果
             [ -s "$work_dir"/speedtest-cli-"$count".json ] && _check_output
         fi
@@ -400,79 +403,83 @@ _speedtest_cli_test() {
             echo "测速次数过多，暂时被限制，请过一段时间后再进行测试"
             break
         fi
-        count=$(( count + 1 ))
-    done < "$work_dir"/speedtest-cli-option-filter.txt
+        count=$((count + 1))
+    done <"$work_dir"/speedtest-cli-option-filter.txt
 }
-
 
 ########## bim-core ##########
 
 _bim_core_test() {
     # bim-core的选项、参数
-    awk -F, '{ print $3 }' "$work_dir"/bim-core-node.txt > "$work_dir"/bim-core-option.txt
+    awk -F, '{ print $3 }' "$work_dir"/bim-core-node.txt >"$work_dir"/bim-core-option.txt
     _filter_option_bim_core "$work_dir"/bim-core-option.txt "$work_dir"/bim-core-option-filter.txt
     # bim-core测试、输出
-    local option_para
-    local count="1"
+    option_para=""
+    count="1"
     while IFS= read -r option_para; do
         IFS="$old_IFS"
         local node_name latency jitter download upload
         local download_c="15" upload_c="15" latency_c="13" jitter_c="13"
         # bim-core测试
-        timeout --foreground 70 "$work_dir"/bim-core $option_para > "$work_dir"/bim-core-"$count".json 2> "$work_dir"/bim-core-"$count"-error.json
+        _show_progress_bar &
+        bar_pid="$!" && disown "$bar_pid"
+        timeout --foreground 70 ${work_dir}/bim-core ${option_para} >${work_dir}/bim-core-${count}.json 2>${work_dir}/bim-core-${count}-error.json
+        kill "$bar_pid" 2>/dev/null && printf "\r"
         # bim-core输出
         if [ -s "$work_dir"/bim-core-"$count".json ]; then
             # 节点名称
-            node_name=$( awk -F, NR=="$count"'{ print $2 }' "$work_dir"/bim-core-node.txt )
+            node_name=$(awk -F, NR=="$count"'{ print $2 }' "$work_dir"/bim-core-node.txt)
             # 延迟，ms
-            latency="$( awk '{ print $5 }' "$work_dir"/bim-core-"$count".json | awk -F',' '{ print $1 }' )"
+            latency="$(awk '{ print $5 }' "$work_dir"/bim-core-"$count".json | awk -F',' '{ print $1 }')"
             _check_num "$latency" || latency=" 失败"
             _check_num "$latency" || latency_c="15"
-            _check_num "$latency" && latency="$( printf "%.2f" "$latency" ) ms"
+            _check_num "$latency" && latency="$(printf "%.2f" "$latency") ms"
             # 抖动，ms
-            jitter="$( awk '{ print $6 }' "$work_dir"/bim-core-"$count".json )"
+            jitter="$(awk '{ print $6 }' "$work_dir"/bim-core-"$count".json)"
             _check_num "$jitter" || jitter=" 失败"
             _check_num "$jitter" || jitter_c="15"
-            _check_num "$jitter" && jitter="$( printf "%.2f" "$jitter" ) ms"
+            _check_num "$jitter" && jitter="$(printf "%.2f" "$jitter") ms"
             # 下载速度
-            download="$( awk '{ print $3 }' "$work_dir"/bim-core-"$count".json | awk -F',' '{ print $1 }' )"
+            download="$(awk '{ print $3 }' "$work_dir"/bim-core-"$count".json | awk -F',' '{ print $1 }')"
             _check_num "$download" || download="  失败"
             _check_num "$download" || download_c="17"
-            _check_num "$download" && download="$( printf "%.2f" "$download" ) Mbps"
+            _check_num "$download" && download="$(printf "%.2f" "$download") Mbps"
             # 上传速度
-            upload="$( awk '{ print $1 }' "$work_dir"/bim-core-"$count".json | awk -F',' '{ print $1 }' )"
+            upload="$(awk '{ print $1 }' "$work_dir"/bim-core-"$count".json | awk -F',' '{ print $1 }')"
             _check_num "$upload" || upload="  失败"
             _check_num "$upload" || upload_c="17"
-            _check_num "$upload" && upload="$( printf "%.2f" "$upload" ) Mbps"
+            _check_num "$upload" && upload="$(printf "%.2f" "$upload") Mbps"
             # 输出结果
             [ -s "$work_dir"/bim-core-"$count".json ] && _check_output
         fi
-        count=$(( count + 1 ))
-    done < "$work_dir"/bim-core-option-filter.txt
+        count=$((count + 1))
+    done <"$work_dir"/bim-core-option-filter.txt
 }
-
 
 ########## speedtest-go ##########
 
 _speedtest_go_test() {
     # speedtest-go的选项、参数
-    awk -F, '{ print $3 }' "$work_dir"/speedtest-go-node.txt > "$work_dir"/speedtest-go-option.txt
+    awk -F, '{ print $3 }' "$work_dir"/speedtest-go-node.txt >"$work_dir"/speedtest-go-option.txt
     _filter_option_speedtest_go "$work_dir"/speedtest-go-option.txt "$work_dir"/speedtest-go-option-filter.txt
     # speedtest-go测试、输出
-    local option_para
-    local count="1"
+    option_para=""
+    count="1"
     while IFS= read -r option_para; do
         IFS="$old_IFS"
         local node_name latency jitter download upload
         local download_c="15" upload_c="15" latency_c="13" jitter_c="13"
         # speedtest-go测试
-        timeout --foreground 70 "$work_dir"/speedtest-go $option_para > "$work_dir"/speedtest-go-"$count".json 2> "$work_dir"/speedtest-go-"$count"-error.json
+        _show_progress_bar &
+        bar_pid="$!" && disown "$bar_pid"
+        timeout --foreground 70 ${work_dir}/speedtest-go ${option_para} >${work_dir}/speedtest-go-${count}.json 2>${work_dir}/speedtest-go-${count}-error.json
+        kill "$bar_pid" 2>/dev/null && printf "\r"
         # speedtest-go输出
         if [ -s "$work_dir"/speedtest-go-"$count".json ] && ! grep -q "Fatal" "$work_dir"/speedtest-go-"$count".json; then
             # 节点名称
-            node_name="$( awk -F, NR=="$count"'{ print $2 }' "$work_dir"/speedtest-go-node.txt )"
+            node_name="$(awk -F, NR=="$count"'{ print $2 }' "$work_dir"/speedtest-go-node.txt)"
             # 延迟，ms
-            latency="$( awk -F' |ms|µs' '/Latency/{ print $3 }' "$work_dir"/speedtest-go-"$count".json )"
+            latency="$(awk -F' |ms|µs' '/Latency/{ print $3 }' "$work_dir"/speedtest-go-"$count".json)"
             if awk -F'Latency: ' /Latency/'{ print $2 }' "$work_dir"/speedtest-go-"$count".json | awk -F' Jitter: ' '{ print $1 }' | grep -q µs; then
                 latency_unit="µs"
             elif awk -F'Latency: ' /Latency/'{ print $2 }' "$work_dir"/speedtest-go-"$count".json | awk -F' Jitter: ' '{ print $1 }' | grep -q ms; then
@@ -480,9 +487,9 @@ _speedtest_go_test() {
             fi
             _check_num "$latency" || latency=" 失败"
             _check_num "$latency" || latency_c="15"
-            _check_num "$latency" && latency="$( printf "%.2f" "$latency" ) $latency_unit"
+            _check_num "$latency" && latency="$(printf "%.2f" "$latency") $latency_unit"
             # 抖动，ms
-            jitter="$( awk -F' |ms|µs' '/Jitter/{ print $6 }' "$work_dir"/speedtest-go-"$count".json )"
+            jitter="$(awk -F' |ms|µs' '/Jitter/{ print $6 }' "$work_dir"/speedtest-go-"$count".json)"
             if awk -F'Jitter: ' /Jitter/'{ print $2 }' "$work_dir"/speedtest-go-"$count".json | awk -F' Min: ' '{ print $1 }' | grep -q µs; then
                 jitter_unit="µs"
             elif awk -F'Jitter: ' /Jitter/'{ print $2 }' "$work_dir"/speedtest-go-"$count".json | awk -F' Min: ' '{ print $1 }' | grep -q ms; then
@@ -490,16 +497,16 @@ _speedtest_go_test() {
             fi
             _check_num "$jitter" || jitter=" 失败"
             _check_num "$jitter" || jitter_c="15"
-            _check_num "$jitter" && jitter="$( printf "%.2f" "$jitter" ) $jitter_unit"
+            _check_num "$jitter" && jitter="$(printf "%.2f" "$jitter") $jitter_unit"
             # 下载、上传速度，Mbps
-            download="$( awk -F' |Mbps' '/Download/{ print $3 }' "$work_dir"/speedtest-go-"$count".json )"
+            download="$(awk -F' |Mbps' '/Download/{ print $3 }' "$work_dir"/speedtest-go-"$count".json)"
             _check_num "$download" || download="  失败"
             _check_num "$download" || download_c="17"
-            _check_num "$download" && download="$( printf "%.2f" "$download" ) Mbps"
-            upload="$( awk -F' |Mbps' '/Upload/{ print $3 }' "$work_dir"/speedtest-go-"$count".json )"
+            _check_num "$download" && download="$(printf "%.2f" "$download") Mbps"
+            upload="$(awk -F' |Mbps' '/Upload/{ print $3 }' "$work_dir"/speedtest-go-"$count".json)"
             _check_num "$upload" || upload="  失败"
             _check_num "$upload" || upload_c="17"
-            _check_num "$upload" && upload="$( printf "%.2f" "$upload" ) Mbps"
+            _check_num "$upload" && upload="$(printf "%.2f" "$upload") Mbps"
             _check_option "--no-upload" "$option_para" && upload="  跳过"
             _check_option "--no-upload" "$option_para" && upload_c="17"
             _check_option "--no-download" "$option_para" && download="  跳过"
@@ -507,49 +514,51 @@ _speedtest_go_test() {
             # 输出结果
             [ -s "$work_dir"/speedtest-go-"$count".json ] && _check_output
         fi
-        count=$(( count + 1 ))
-    done < "$work_dir"/speedtest-go-option-filter.txt
+        count=$((count + 1))
+    done <"$work_dir"/speedtest-go-option-filter.txt
 }
-
 
 ########## librespeed-cli ##########
 
 _librespeed_cli_test() {
     # librespeed-cli的选项、参数
-    awk -F, '{ print $3 }' "$work_dir"/librespeed-cli-node.txt > "$work_dir"/lbrespeed-cli-option.txt
+    awk -F, '{ print $3 }' "$work_dir"/librespeed-cli-node.txt >"$work_dir"/lbrespeed-cli-option.txt
     _filter_option_librespeed_cli "$work_dir"/lbrespeed-cli-option.txt "$work_dir"/lbrespeed-cli-option-filter.txt
     # librespeed-cli测试、输出
-    local option_para
-    local count="1"
+    option_para=""
+    count="1"
     while IFS= read -r option_para; do
         IFS="$old_IFS"
         local node_name latency jitter download upload
         local download_c="15" upload_c="15" latency_c="13" jitter_c="13"
         # librespeed-cli测试
-        timeout --foreground 70 "$work_dir"/librespeed-cli --json $option_para > "$work_dir"/librespeed-cli-"$count".json 2> "$work_dir"/librespeed-cli-"$count"-error.json
+        _show_progress_bar &
+        bar_pid="$!" && disown "$bar_pid"
+        timeout --foreground 70 ${work_dir}/librespeed-cli --json ${option_para} >${work_dir}/librespeed-cli-${count}.json 2>${work_dir}/librespeed-cli-${count}-error.json
+        kill "$bar_pid" 2>/dev/null && printf "\r"
         # librespeed-cli输出
         if [ -s "$work_dir"/librespeed-cli-"$count".json ]; then
             # 节点名称
-            node_name=$( awk -F, NR=="$count"'{ print $2 }' "$work_dir"/librespeed-cli-node.txt )
+            node_name=$(awk -F, NR=="$count"'{ print $2 }' "$work_dir"/librespeed-cli-node.txt)
             # 延迟，ms
-            latency="$( awk -F'"ping":' '{ print $2 }' "$work_dir"/librespeed-cli-"$count".json | awk -F',' '{ print $1 }' )"
+            latency="$(awk -F'"ping":' '{ print $2 }' "$work_dir"/librespeed-cli-"$count".json | awk -F',' '{ print $1 }')"
             _check_num "$latency" || latency=" 失败"
             _check_num "$latency" || latency_c="15"
-            _check_num "$latency" && latency="$( printf "%.2f" "$latency" ) ms"
+            _check_num "$latency" && latency="$(printf "%.2f" "$latency") ms"
             # 抖动，ms
-            jitter="$( awk -F'"jitter":' '{ print $2 }' "$work_dir"/librespeed-cli-"$count".json | awk -F',' '{ print $1 }' )"
+            jitter="$(awk -F'"jitter":' '{ print $2 }' "$work_dir"/librespeed-cli-"$count".json | awk -F',' '{ print $1 }')"
             _check_num "$jitter" || jitter=" 失败"
             _check_num "$jitter" || jitter_c="15"
-            _check_num "$jitter" && jitter="$( printf "%.2f" "$jitter" ) ms"
+            _check_num "$jitter" && jitter="$(printf "%.2f" "$jitter") ms"
             # 下载、上传速度，Mbps
-            download="$( awk -F'"download":' '{ print $2 }' "$work_dir"/librespeed-cli-"$count".json | awk -F',' '{ print $1 }' )"
+            download="$(awk -F'"download":' '{ print $2 }' "$work_dir"/librespeed-cli-"$count".json | awk -F',' '{ print $1 }')"
             _check_num "$download" || download="  失败"
             _check_num "$download" || download_c="17"
-            _check_num "$download" && download="$( printf "%.2f" "$download" ) Mbps"
-            upload="$( awk -F'"upload":' '{ print $2 }' "$work_dir"/librespeed-cli-"$count".json | awk -F',' '{ print $1 }')"
+            _check_num "$download" && download="$(printf "%.2f" "$download") Mbps"
+            upload="$(awk -F'"upload":' '{ print $2 }' "$work_dir"/librespeed-cli-"$count".json | awk -F',' '{ print $1 }')"
             _check_num "$upload" || upload="  失败"
             _check_num "$upload" || upload_c="17"
-            _check_num "$upload" && upload="$( printf "%.2f" "$upload" ) Mbps"
+            _check_num "$upload" && upload="$(printf "%.2f" "$upload") Mbps"
             _check_option "--no-upload" "$option_para" && upload="  跳过"
             _check_option "--no-upload" "$option_para" && upload_c="17"
             _check_option "--no-download" "$option_para" && download="  跳过"
@@ -557,30 +566,29 @@ _librespeed_cli_test() {
             # 输出结果
             [ -s "$work_dir"/librespeed-cli-"$count".json ] && _check_output
         fi
-        count=$(( count + 1 ))
-    done < "$work_dir"/lbrespeed-cli-option-filter.txt
+        count=$((count + 1))
+    done <"$work_dir"/lbrespeed-cli-option-filter.txt
 }
-
 
 ########## iperf3 ##########
 
 _iperf3_test() {
     # iperf3的选项、参数
-    awk -F',' '{ print $3 }' "$work_dir"/iperf3-node.txt > "$work_dir"/iperf3-option.txt
+    awk -F',' '{ print $3 }' "$work_dir"/iperf3-node.txt >"$work_dir"/iperf3-option.txt
     _filter_option_iperf3 "$work_dir"/iperf3-option.txt "$work_dir"/iperf3-option-filter.txt
     # iperf3测试、输出
-    local option_para
-    local count="1"
+    option_para=""
+    count="1"
     while IFS= read -r option_para; do
         IFS="$old_IFS"
         local node_name download upload latency jitter
         local download_c="15" upload_c="15" latency_c="13" jitter_c="13"
         # iperf3测试
         if _check_option "--up-and-down" "$option_para"; then
-        # 双向
-            option_para="$( echo "$option_para" | awk -F'--up-and-down' '{ print $1 $2 }' )"
+            # 双向
+            option_para="$(echo "$option_para" | awk -F'--up-and-down' '{ print $1 $2 }')"
             # 节点名称
-            node_name=$( awk -F, NR=="$count"'{ print $2 }' "$work_dir"/iperf3-node.txt )
+            node_name=$(awk -F, NR=="$count"'{ print $2 }' "$work_dir"/iperf3-node.txt)
             # 延迟，ms
             latency=" 跳过"
             latency_c="15"
@@ -589,8 +597,11 @@ _iperf3_test() {
             jitter_c="15"
             # 上传
             local i_busy
-            for (( i_busy=1; i_busy<=65; i_busy++ )); do
-                timeout --foreground 70 iperf3 -f m $option_para > "$work_dir"/iperf3-"$count".json 2> "$work_dir"/iperf3-"$count"-error.json
+            for ((i_busy = 1; i_busy <= 65; i_busy++)); do
+                _show_progress_bar &
+                bar_pid="$!" && disown "$bar_pid"
+                timeout --foreground 70 iperf3 -f m ${option_para} >${work_dir}/iperf3-${count}.json 2>${work_dir}/iperf3-${count}-error.json
+                kill "$bar_pid" 2>/dev/null && printf "\r"
                 if grep -q "busy" "$work_dir"/iperf3-"$count"-error.json; then
                     sleep 0.5
                 fi
@@ -600,16 +611,19 @@ _iperf3_test() {
             done
             # 上传速度，Mbps
             if [ -s "$work_dir"/iperf3-"$count".json ]; then
-                upload="$( awk '{ rows[NR] = $0 } END{ print rows[NR-3] }' "$work_dir"/iperf3-"$count".json | awk -F'Bytes ' '{ print $2 }' | awk '{ print $1 }' )"
+                upload="$(awk '{ rows[NR] = $0 } END{ print rows[NR-3] }' "$work_dir"/iperf3-"$count".json | awk -F'Bytes ' '{ print $2 }' | awk '{ print $1 }')"
                 _check_num "$upload" || upload="  失败"
                 _check_num "$upload" || upload_c="17"
-                _check_num "$upload" && upload="$( printf "%.2f" "$upload" ) Mbps"
+                _check_num "$upload" && upload="$(printf "%.2f" "$upload") Mbps"
             else
                 upload="  跳过" && upload_c="17"
             fi
             # 下载
-            for (( i_busy=1; i_busy<=65; i_busy++ )); do
-                timeout --foreground 70 iperf3 -f m -R $option_para > "$work_dir"/iperf3-"$count".json 2> "$work_dir"/iperf3-"$count"-error.json
+            for ((i_busy = 1; i_busy <= 65; i_busy++)); do
+                _show_progress_bar &
+                bar_pid="$!" && disown "$bar_pid"
+                timeout --foreground 70 iperf3 -f m -R ${option_para} >${work_dir}/iperf3-${count}.json 2>${work_dir}/iperf3-${count}-error.json
+                kill "$bar_pid" 2>/dev/null && printf "\r"
                 if grep -q "busy" "$work_dir"/iperf3-"$count"-error.json; then
                     sleep 0.5
                 fi
@@ -619,19 +633,22 @@ _iperf3_test() {
             done
             # 下载速度，Mbps
             if [ -s "$work_dir"/iperf3-"$count".json ]; then
-                download="$(awk '{ rows[NR] = $0 } END{ print rows[NR-2] }' "$work_dir"/iperf3-"$count".json | awk -F'Bytes ' '{ print $2 }' | awk '{ print $1 }' )"
+                download="$(awk '{ rows[NR] = $0 } END{ print rows[NR-2] }' "$work_dir"/iperf3-"$count".json | awk -F'Bytes ' '{ print $2 }' | awk '{ print $1 }')"
                 _check_num "$download" || download="  失败"
                 _check_num "$download" || download_c="17"
-                _check_num "$download" && download="$( printf "%.2f" "$download" ) Mbps"
+                _check_num "$download" && download="$(printf "%.2f" "$download") Mbps"
             else
                 upload="  跳过" && upload_c="17"
             fi
             # 输出结果
             [ -s "$work_dir"/iperf3-"$count".json ] && _check_output
         else
-        # 单向
-            for (( i_busy=1; i_busy<=65; i_busy++ )); do
-                timeout --foreground 70 iperf3 -f m $option_para > "$work_dir"/iperf3-"$count".json 2> "$work_dir"/iperf3-"$count"-error.json
+            # 单向
+            for ((i_busy = 1; i_busy <= 65; i_busy++)); do
+                _show_progress_bar &
+                bar_pid="$!" && disown "$bar_pid"
+                timeout --foreground 70 iperf3 -f m ${option_para} >${work_dir}/iperf3-${count}.json 2>${work_dir}/iperf3-${count}-error.json
+                kill "$bar_pid" 2>/dev/null && printf "\r"
                 if grep -q "busy" "$work_dir"/iperf3-"$count"-error.json; then
                     sleep 0.5
                 fi
@@ -642,7 +659,7 @@ _iperf3_test() {
             # iperf3输出
             if [ -s "$work_dir"/iperf3-"$count".json ]; then
                 # 节点名称
-                node_name=$( awk -F, NR=="$count"'{ print $2 }' "$work_dir"/iperf3-node.txt )
+                node_name=$(awk -F, NR=="$count"'{ print $2 }' "$work_dir"/iperf3-node.txt)
                 # 延迟，ms
                 latency=" 跳过"
                 latency_c="15"
@@ -650,14 +667,14 @@ _iperf3_test() {
                 jitter=" 跳过"
                 jitter_c="15"
                 # 下载、上传速度，Mbps
-                upload="$( awk '{ rows[NR] = $0 } END{ print rows[NR-3] }' "$work_dir"/iperf3-"$count".json | awk -F'Bytes ' '{ print $2 }' | awk '{ print $1 }' )"
+                upload="$(awk '{ rows[NR] = $0 } END{ print rows[NR-3] }' "$work_dir"/iperf3-"$count".json | awk -F'Bytes ' '{ print $2 }' | awk '{ print $1 }')"
                 _check_num "$upload" || upload="  失败"
                 _check_num "$upload" || upload_c="17"
-                _check_num "$upload" && upload="$( printf "%.2f" "$upload" ) Mbps"
-                download="$(awk '{ rows[NR] = $0 } END{ print rows[NR-2] }' "$work_dir"/iperf3-"$count".json | awk -F'Bytes ' '{ print $2 }' | awk '{ print $1 }' )"
+                _check_num "$upload" && upload="$(printf "%.2f" "$upload") Mbps"
+                download="$(awk '{ rows[NR] = $0 } END{ print rows[NR-2] }' "$work_dir"/iperf3-"$count".json | awk -F'Bytes ' '{ print $2 }' | awk '{ print $1 }')"
                 _check_num "$download" || download="  失败"
                 _check_num "$download" || download_c="17"
-                _check_num "$download" && download="$( printf "%.2f" "$download" ) Mbps"
+                _check_num "$download" && download="$(printf "%.2f" "$download") Mbps"
                 _check_option "-R" "$option_para" && upload="  跳过"
                 _check_option "-R" "$option_para" && upload_c="17"
                 _check_option "-R" "$option_para" || download="  跳过"
@@ -666,47 +683,46 @@ _iperf3_test() {
                 [ -s "$work_dir"/iperf3-"$count".json ] && _check_output
             fi
         fi
-        count=$(( count + 1 ))
-    done < "$work_dir"/iperf3-option-filter.txt
+        count=$((count + 1))
+    done <"$work_dir"/iperf3-option-filter.txt
 }
-
 
 ########## 整理选项、参数 ##########
 
 # 不带参数的选项，包括-/--
 _filter_option_0_para() {
-    if [ "$( echo "$line_input" | awk "{ print $"$column_count" }" )" == "$1" ] || [ "$( echo "$line_input" | awk "{ print $"$column_count" }" )" == "$2" ]; then
+    if [ "$(echo "$line_input" | awk "{ print $"$column_count" }")" == "$1" ] || [ "$(echo "$line_input" | awk "{ print $"$column_count" }")" == "$2" ]; then
         line_output="$line_output $1"
     fi
 }
 
 # 带一个参数的选项，包括-/--
 _filter_option_1_para() {
-    if [ "$( echo "$line_input" | awk "{ print $"$column_count" }" )" == "$1" ] || [ "$( echo "$line_input" | awk "{ print $"$column_count" }" )" == "$2" ]; then
-        column_count=$(( column_count + 1 ))
-        line_output="$line_output $1 $( echo "$line_input" | awk "{ print $"$column_count" }" )"
+    if [ "$(echo "$line_input" | awk "{ print $"$column_count" }")" == "$1" ] || [ "$(echo "$line_input" | awk "{ print $"$column_count" }")" == "$2" ]; then
+        column_count=$((column_count + 1))
+        line_output="$line_output $1 $(echo "$line_input" | awk "{ print $"$column_count" }")"
     fi
 }
 
 # bim-core专用，处理为链接的参数
 _filter_option_bim_core_1() {
-    if [[ "$( echo "$line_input" | awk "{ print $"$column_count" }" )" =~ http ]]; then
-        line_output="$line_output $( echo "$line_input" | awk "{ print $"$column_count" }" )"
+    if [[ "$(echo "$line_input" | awk "{ print $"$column_count" }")" =~ http ]]; then
+        line_output="$line_output $(echo "$line_input" | awk "{ print $"$column_count" }")"
     fi
 }
 
 # iperf3专用，处理-p选项
 _filter_option_iperf3_1() {
     local port
-    if [ "$( echo "$line_input" | awk "{ print $"$column_count" }" )" == "-p" ] || [ "$( echo "$line_input" | awk "{ print $"$column_count" }" )" == "--port" ]; then
-        column_count=$(( column_count + 1 ))
-        port=$( echo "$line_input" | awk "{ print $"$column_count" }" )
+    if [ "$(echo "$line_input" | awk "{ print $"$column_count" }")" == "-p" ] || [ "$(echo "$line_input" | awk "{ print $"$column_count" }")" == "--port" ]; then
+        column_count=$((column_count + 1))
+        port=$(echo "$line_input" | awk "{ print $"$column_count" }")
         if [[ "$port" =~ ^[0-9]+$ ]]; then
             # 一个端口
             line_output="$line_output $1 $port"
         else
             # 多个端口，随机一个
-            port=$( shuf -n 1 -i $port )
+            port=$(shuf -n 1 -i $port)
             line_output="$line_output $1 $port"
         fi
     fi
@@ -719,13 +735,13 @@ _filter_option_speedtest_cli() {
     while IFS= read -r line_input; do
         IFS="$old_IFS"
         line_output=""
-        column_all_count="$( echo "$line_input" | awk '{ print NF }' )"
-        for (( column_count=1; column_count <= column_all_count; column_count++ )); do
+        column_all_count="$(echo "$line_input" | awk '{ print NF }')"
+        for ((column_count = 1; column_count <= column_all_count; column_count++)); do
             _filter_option_1_para -s --server-id
             _filter_option_1_para -o --host
         done
-        echo "$line_output" >> "$file_output"
-    done < "$file_input"
+        echo "$line_output" >>"$file_output"
+    done <"$file_input"
 }
 
 # bim-core
@@ -735,14 +751,14 @@ _filter_option_bim_core() {
     while IFS= read -r line_input; do
         IFS="$old_IFS"
         line_output=""
-        column_all_count="$( echo "$line_input" | awk '{ print NF }' )"
-        for (( column_count=1; column_count <= column_all_count; column_count++ )); do
+        column_all_count="$(echo "$line_input" | awk '{ print NF }')"
+        for ((column_count = 1; column_count <= column_all_count; column_count++)); do
             _filter_option_1_para -6 --ipv6
             _filter_option_1_para -m --multi
             _filter_option_bim_core_1
         done
-        echo "$line_output" >> "$file_output"
-    done < "$file_input"
+        echo "$line_output" >>"$file_output"
+    done <"$file_input"
 }
 
 # speedtest-go
@@ -752,8 +768,8 @@ _filter_option_speedtest_go() {
     while IFS= read -r line_input; do
         IFS="$old_IFS"
         line_output=""
-        column_all_count="$( echo "$line_input" | awk '{ print NF }' )"
-        for (( column_count=1; column_count <= column_all_count; column_count++ )); do
+        column_all_count="$(echo "$line_input" | awk '{ print NF }')"
+        for ((column_count = 1; column_count <= column_all_count; column_count++)); do
             _filter_option_1_para -s --server
             _filter_option_1_para --custom-url --custom-url
             _filter_option_1_para -t --thread
@@ -762,8 +778,8 @@ _filter_option_speedtest_go() {
             _filter_option_0_para --no-download --no-download
             _filter_option_0_para --no-upload --no-upload
         done
-        echo "$line_output" >> "$file_output"
-    done < "$file_input"
+        echo "$line_output" >>"$file_output"
+    done <"$file_input"
 }
 
 # librespeed-cli
@@ -773,8 +789,8 @@ _filter_option_librespeed_cli() {
     while IFS= read -r line_input; do
         IFS="$old_IFS"
         line_output=""
-        column_all_count="$( echo "$line_input" | awk '{ print NF }' )"
-        for (( column_count=1; column_count <= column_all_count; column_count++ )); do
+        column_all_count="$(echo "$line_input" | awk '{ print NF }')"
+        for ((column_count = 1; column_count <= column_all_count; column_count++)); do
             _filter_option_1_para --server-json --server-json
             _filter_option_1_para --local-json --local-json
             _filter_option_1_para --server --server
@@ -785,8 +801,8 @@ _filter_option_librespeed_cli() {
             _filter_option_0_para -4 --ipv4
             _filter_option_0_para -6 --ipv6
         done
-        echo "$line_output" >> "$file_output"
-    done < "$file_input"
+        echo "$line_output" >>"$file_output"
+    done <"$file_input"
 }
 
 # iperf3
@@ -796,8 +812,8 @@ _filter_option_iperf3() {
     while IFS= read -r line_input; do
         IFS="$old_IFS"
         line_output=""
-        column_all_count="$( echo "$line_input" | awk '{ print NF }' )"
-        for (( column_count=1; column_count <= column_all_count; column_count++ )); do
+        column_all_count="$(echo "$line_input" | awk '{ print NF }')"
+        for ((column_count = 1; column_count <= column_all_count; column_count++)); do
             _filter_option_1_para -c -c
             _filter_option_1_para -P --parallel
             _filter_option_1_para -i --interval
@@ -810,10 +826,9 @@ _filter_option_iperf3() {
             _filter_option_0_para --up-and-down --up-and-down
             _filter_option_iperf3_1 -p --port
         done
-        echo "$line_output" >> "$file_output"
-    done < "$file_input"
+        echo "$line_output" >>"$file_output"
+    done <"$file_input"
 }
-
 
 ########## 检测选项，用于预判测速结果 ##########
 
@@ -826,7 +841,6 @@ _check_option() {
     fi
 }
 
-
 _check_num() {
     local num_input="$1"
     if [[ "$num_input" =~ ^[0-9]+(\.[0-9]+)?$ ]] && ! [[ "$num_input" =~ ^0+(\.0+)?$ ]]; then
@@ -836,54 +850,61 @@ _check_num() {
     fi
 }
 
-
 ########## 输出 ##########
 
-_check_output(){
+_check_output() {
     local i_check_output
     local count_check_output="0"
-    for i_check_output in $( echo "$download $upload $latency $jitter" ); do
+    for i_check_output in $(echo "$download $upload $latency $jitter"); do
         if [[ "$i_check_output" =~ 失败 ]]; then
-            count_check_output=$(( count_check_output + 1 ))
+            count_check_output=$((count_check_output + 1))
         elif [[ "$i_check_output" =~ 跳过 ]]; then
-            count_check_output=$(( count_check_output + 1 ))
+            count_check_output=$((count_check_output + 1))
         fi
     done
     [ "$count_check_output" -ne 4 ] && printf "${yellow}%-s${green}%-${download_c}s${cyan}%-${upload_c}s${blue}%-${latency_c}s${purple}%-${jitter_c}s${endc}\n" "$node_name" "$download" "$upload" "$latency" "$jitter"
 }
 
-
-########## 上传结果 ##########
-_upload_output() {
-    local url_name upload_url share_url admin_url
-    # 替换掉输出结果里的颜色代码
-    sed -i 's)\x1B[[0-9;]*m))g' "$work_dir"/output.txt
-    # 随机取6位作为分享链接名字
-    url_name="speedtest-$( head /dev/random | sha256sum | awk '{ print $1 }' | cut -c 1-6 )"
-    # 分享链接服务端，https://github.com/SharzyL/pastebin-worker
-    upload_url="$( curl -X POST -s -F "c=@${work_dir}/output.txt" -F "e=7d" -F "n=${url_name}" "https://pastebin.xidian.eu.org" )"
-    share_url="$( echo "$upload_url" | awk -F'"' '/url/{ print $4 }' )"
-    admin_url="$( echo "$upload_url" | awk -F'"' '/admin/{ print $4 }' )"
-    [[ "$share_url" =~ ^https://pastebin.xidian.eu.org/ ]] && printf "${yellow}%-s${endc}%-s\n" "分享链接(有效期7天): " "$share_url"
-    [[ "$admin_url" =~ ^https://pastebin.xidian.eu.org/ ]] && printf "${yellow}%-s${endc}%-s\n\n" "管理您的分享链接: " "$admin_url"
-}
-
 ########## 删除残余文件 ##########
 
 _rm_dir() {
-    _print_banner_4 | tee -a "$work_dir"/output.txt
-    _upload_output
+    _print_banner_4
     rm -rf "$work_dir"
     exit 0
+}
+
+########## debug ##########
+
+_debug() {
+    local debug_tar_name
+    if [[ "$debug_flag" -eq 1 ]]; then
+        {
+            echo "OS info:"
+            cat /etc/os-release
+            echo "Shell info:"
+            echo "$SHELL"
+            echo "User info:"
+            echo "$UID"
+            echo "Loc info:"
+            echo "$loc"
+        } >$work_dir/info.txt
+        debug_tar_name="sp-debug-$(TZ=Asia/Shanghai date +"%Y%m%d%H%M%S").tar"
+        touch $work_dir/1.json
+        tar -cf "$work_dir/$debug_tar_name" ${work_dir}/*.{json,txt}
+        printf "\n${red}%-s${endc}\n" "方便的话欢迎将到GitHub反馈下述结果："
+        curl -X POST -s -Fc=@"$work_dir/$debug_tar_name" -Fn="${debug_tar_name%.*}" -Fe=90d 'https://pastebin.888853.xyz'
+        echo
+    fi
 }
 
 ########## main ##########
 
 _main() {
-    trap '{ echo; _rm_dir; }' SIGINT SIGQUIT SIGTERM
+    trap '{ kill ${bar_pid} 2>/dev/null; printf "\r"; _debug; _rm_dir; }' EXIT
     _check_architecture
     _constant
     _print_banner_1
+    _check_user
     _check_region
     _check_package tar tar
     _check_package curl curl
@@ -897,18 +918,22 @@ _main() {
     _get_node_list
     _classify_node
     clear
-    _print_banner_1 | tee -a "$work_dir"/output.txt
-    [ -s "$work_dir"/banner-custom.txt ] && _print_banner_2 | tee -a "$work_dir"/output.txt
-    _print_banner_3 | tee -a "$work_dir"/output.txt
-    [ -s "$work_dir"/speedtest-cli-node.txt ] && _speedtest_cli_test | tee -a "$work_dir"/output.txt
-    [ -s "$work_dir"/bim-core-node.txt ] && _bim_core_test | tee -a "$work_dir"/output.txt
-    [ -s "$work_dir"/speedtest-go-node.txt ] && _speedtest_go_test | tee -a "$work_dir"/output.txt
-    [ -s "$work_dir"/librespeed-cli-node.txt ] && _librespeed_cli_test | tee -a "$work_dir"/output.txt
-    [ -s "$work_dir"/iperf3-node.txt ] && _iperf3_test | tee -a "$work_dir"/output.txt
-    _rm_dir
+    _print_banner_1
+    [ -s "$work_dir"/banner-custom.txt ] && _print_banner_2
+    _print_banner_3
+    [ -s "$work_dir"/speedtest-cli-node.txt ] && _speedtest_cli_test
+    [ -s "$work_dir"/bim-core-node.txt ] && _bim_core_test
+    [ -s "$work_dir"/speedtest-go-node.txt ] && _speedtest_go_test
+    [ -s "$work_dir"/librespeed-cli-node.txt ] && _librespeed_cli_test
+    [ -s "$work_dir"/iperf3-node.txt ] && _iperf3_test
 }
 
-
 ####################
+
+for arg in "$@"; do
+    if [[ "$arg" == "--debug" ]]; then
+        debug_flag="1"
+    fi
+done
 
 _main

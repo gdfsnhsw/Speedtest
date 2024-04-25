@@ -1,0 +1,33 @@
+name: Test for sh-dev
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - sh-dev
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          repository: 'i-abc/Speedtest'
+          ref: 'sh-dev'
+      - name: Test
+        run: |
+          sed -i 's)sleep 0.1)sleep 10)' speedtest.sh
+          bash speedtest.sh <<<'18'
+  test-with-debug:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          repository: 'i-abc/Speedtest'
+          ref: 'sh-dev'
+      - name: Test
+        run: |
+          sed -i 's)sleep 0.1)sleep 10)' speedtest.sh
+          bash speedtest.sh --debug <<<'18'
